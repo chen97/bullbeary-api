@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from django.conf.urls import url, include 
+from django.conf.urls import url, include
 #from users.views import GoogleLogin
 from rest_framework_simplejwt import views as jwt_views
 from django.contrib import admin
@@ -25,18 +25,22 @@ from posts.views import PostList, PostDetail
 from comments.views import CommentList, CommentDetail
 from tags.views import TagList, TagDetail
 
-urlpatterns = [ 
+urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('stocks.urls')),
     path('api/', include('dj_rest_auth.urls')),
     path('api/accounts/', include('allauth.urls'), name='socialaccount_signup'),
     path('api/accounts/registration/', include('dj_rest_auth.registration.urls')),
     path('api/accounts/facebook/', FacebookLogin.as_view(), name='fb_login'),
-    path('api/accounts/facebook/connect/', FacebookConnect.as_view(), name='fb_connect'),
+    path('api/accounts/facebook/connect/',
+         FacebookConnect.as_view(), name='fb_connect'),
     path('api/accounts/google/', GoogleLogin.as_view(), name='gl_login'),
-    path('api/accounts/google/connect/', GoogleConnect.as_view(), name='gl_connect'),
-    path('api/accounts/socialaccounts/', SocialAccountListView.as_view(), name='social_account_list'),
-    path('api/accounts/socialaccounts/<int:pk>/disconnect/', SocialAccountDisconnectView.as_view(), name='social_account_disconnect'),
+    path('api/accounts/google/connect/',
+         GoogleConnect.as_view(), name='gl_connect'),
+    path('api/accounts/socialaccounts/',
+         SocialAccountListView.as_view(), name='social_account_list'),
+    path('api/accounts/socialaccounts/<int:pk>/disconnect/',
+         SocialAccountDisconnectView.as_view(), name='social_account_disconnect'),
     path('posts/', PostDetail.as_view()),
     path('posts/<int:pk>/', PostDetail.as_view()),
     path('comments/', CommentList.as_view()),

@@ -1,9 +1,10 @@
 from rest_meets_djongo import serializers
-from stocks.models import Stock
+from stocks.models import Stocks
+
 
 class StockSerializer(serializers.DjongoModelSerializer):
     class Meta:
-        model = Stock
+        model = Stocks
         fields = ('id',
                   'title',
                   'description',
