@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.http.response import JsonResponse
 from rest_framework.parsers import JSONParser 
 from rest_framework import status
-from stocks.models import Stock
+from stocks.models import Stocks
 from stocks.serializers import StockSerializer
 
 from rest_framework.decorators import api_view
@@ -11,7 +11,7 @@ from rest_framework.decorators import api_view
 @api_view(['GET', 'POST', 'DELETE'])
 def stock_list(request):
     if request.method == 'GET':
-        stocks = Stock.objects.all()
+        stocks = Stocks.objects.all()
         
         title = request.GET.get('title', None)
         if title is not None:
@@ -30,7 +30,7 @@ def stock_list(request):
         return JsonResponse(stock_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
     elif request.method == 'DELETE':
-        count = Stock.objects.all().delete()
+        count = Stocks.objects.all().delete()
         return JsonResponse({'message': '{} Tutorials were deleted successfully!'.format(count[0])}, status=status.HTTP_204_NO_CONTENT)
  
  

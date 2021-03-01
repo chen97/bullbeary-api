@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'stocks.apps.StocksConfig',
+    'posts.apps.PostsConfig',
+    'comments.apps.CommentsConfig',
+    'tags.apps.TagsConfig',
     'rest_framework.authtoken',
     'dj_rest_auth',
     'django.contrib.sites',
@@ -155,3 +158,5 @@ REST_FRAMEWORK = {
 
 # Our site will have how many domain? for social login purpose
 SITE_ID = 4
+
+ACCOUNT_LOGOUT_ON_GET = True

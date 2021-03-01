@@ -21,6 +21,9 @@ from rest_framework_simplejwt import views as jwt_views
 from django.contrib import admin
 from users.views import FacebookLogin, FacebookConnect, GoogleLogin, GoogleConnect
 from dj_rest_auth.registration.views import SocialAccountListView, SocialAccountDisconnectView
+from posts.views import PostList, PostDetail
+from comments.views import CommentList, CommentDetail
+from tags.views import TagList, TagDetail
 
 urlpatterns = [ 
     path('admin/', admin.site.urls),
@@ -33,5 +36,11 @@ urlpatterns = [
     path('api/accounts/google/', GoogleLogin.as_view(), name='gl_login'),
     path('api/accounts/google/connect/', GoogleConnect.as_view(), name='gl_connect'),
     path('api/accounts/socialaccounts/', SocialAccountListView.as_view(), name='social_account_list'),
-    path('api/accounts/socialaccounts/<int:pk>/disconnect/', SocialAccountDisconnectView.as_view(), name='social_account_disconnect')
+    path('api/accounts/socialaccounts/<int:pk>/disconnect/', SocialAccountDisconnectView.as_view(), name='social_account_disconnect'),
+    path('posts/', PostDetail.as_view()),
+    path('posts/<int:pk>/', PostDetail.as_view()),
+    path('comments/', CommentList.as_view()),
+    path('comments/<int:pk>/', CommentDetail.as_view()),
+    path('tags/', TagList.as_view()),
+    path('tags/<int:pk>/', TagDetail.as_view()),
 ]
