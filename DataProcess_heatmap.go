@@ -42,23 +42,15 @@ func main() {
 		return
 	}
 
-	// 获取 answerInfos 节点
 	stocks := js.Get("children")
 
-	// answerInfos 下面是一个数组
-	// rows是 []interface{}，类型
 	stock, err := stocks.Array()
 	if err != nil {
 		fmt.Print("Get answerInfos error:", err.Error())
 		return
 	}
 
-	// 打印answerInfos下数组长度，这里只有1个节点，所以是1
-	//fmt.Printf("answerInfos size:%d \n", len(stock))
-
-	// row是interface{}类型
 	for index := range stock {
-		// rows是数组，所以需要再获取一下节点
 		node := stocks.GetIndex(index)
 
 		id := node.Get("id").MustString()
@@ -74,30 +66,7 @@ func main() {
 		sector := node.Get("$sector").MustString()
 		is_shariah := node.Get("$shariah").MustString()
 
-		// Add stock
-		/*
-			fmt.Printf("StockName:%s, StockPrice:%s \n", name, stockPrice)
-			StocksResult, err := StocksCollection.InsertOne(ctx, bson.D{
-				{Key: "id", Value: id},
-				{Key: "cashtag", Value: cashtag},
-				{Key: "name", Value: name},
-				{Key: "full_name", Value: stockFullName},
-				{Key: "stock_price", Value: stockPrice},
-				{Key: "price_change_rm", Value: price_change_rm},
-				{Key: "price_change_pct", Value: price_change_pct},
-				{Key: "volume", Value: volume},
-				{Key: "marketcap", Value: marketcap},
-				{Key: "board", Value: board},
-				{Key: "sector", Value: sector},
-				{Key: "is_shariah", Value: is_shariah},
-			})
-			if err != nil {
-				log.Fatal(err)
-			}
-			fmt.Printf("Inserted %v documents into episode collection!\n", (StocksResult))
-		*/
-
-		// Update stock
+		// Insert if not exist, update if exist
 		fmt.Printf("StockName:%s, StockPrice:%s \n", name, stockPrice)
 		StocksResult, err := StocksCollection.UpdateOne(ctx,
 			bson.M{
@@ -117,6 +86,7 @@ func main() {
 					{Key: "is_shariah", Value: is_shariah},
 				},
 			},
+			options.Update().SetUpsert(true),
 		)
 		if err != nil {
 			log.Fatal(err)
@@ -125,6 +95,7 @@ func main() {
 	}
 }
 
+// To read the id of sectors
 func sectorName(name string) string {
 	switch name {
 	case "50":
