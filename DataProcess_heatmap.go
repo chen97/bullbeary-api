@@ -28,7 +28,7 @@ func main() {
 	defer client.Disconnect(ctx)
 
 	quickstartDatabase := client.Database("Bullbeary")
-	StocksCollection := quickstartDatabase.Collection("Stocks")
+	StocksCollection := quickstartDatabase.Collection("stocks_stock")
 
 	resp, err := http.Get("https://www.bursamarketplace.com/bin/json/stockheatmap.json")
 	if err != nil {
