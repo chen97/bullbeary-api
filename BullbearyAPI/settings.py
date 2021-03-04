@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'posts.apps.PostsConfig',
     'comments.apps.CommentsConfig',
     'tags.apps.TagsConfig',
+    'votes.apps.VotesConfig',
     'rest_framework.authtoken',
     'dj_rest_auth',
     'django.contrib.sites',

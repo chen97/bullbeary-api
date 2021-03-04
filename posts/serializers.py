@@ -2,15 +2,16 @@
 from rest_framework import serializers
 from posts.models import Posts
 from django.contrib.auth.models import User
-
+from votes.serializers import VoteSerializer
 
 class PostSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     comments = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+    votes = VoteSerializer(many=True, read_only=True)
 
     class Meta:
         model = Posts
-        fields = ['id', 'title', 'content', 'owner', 'comments',
+        fields = ['id', 'title', 'content', 'owner', 'comments', 'votes',
                   'tags', 'views', 'last_edit', 'datetime']
 
 

@@ -24,6 +24,7 @@ from dj_rest_auth.registration.views import SocialAccountListView, SocialAccount
 from posts.views import PostList, PostDetail
 from comments.views import CommentList, CommentDetail
 from tags.views import TagList, TagDetail
+from votes.views import VoteList, VoteDetail
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -47,4 +48,6 @@ urlpatterns = [
     path('api/comments/<int:pk>/', CommentDetail.as_view()),
     path('api/tags/', TagList.as_view()),
     path('api/tags/<int:pk>/', TagDetail.as_view()),
+    path('api/votes/', VoteList.as_view()),
+    path('api/votes/<int:pk>/', VoteDetail.as_view()),
 ]
