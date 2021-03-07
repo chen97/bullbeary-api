@@ -5,11 +5,12 @@ from stocks.models import Stocks
 class StockSerializer(serializers.DjongoModelSerializer):
     class Meta:
         model = Stocks
-        fields = ('full_name',
-                  'stock_price',
-                  'description',
-                  'published',
-                  'marketcap',
-                  'volume',
-                  'board',
-                  'sector')
+        fields = '__all__'
+
+# class StockPriceSerializer(serializers.DjongoModelSerializer):
+#     class Meta:
+#         model = Stocks
+#         fields = ( 'stock_price',
+#                    'ticker',
+#                    'board',
+#                    'code')
