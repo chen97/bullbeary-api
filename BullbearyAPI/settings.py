@@ -95,11 +95,11 @@ WSGI_APPLICATION = 'BullbearyAPI.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
-     'default': {
-         'ENGINE': 'djongo',
-         'NAME': 'Bullbeary',
-     }
- }
+    'default': {
+        'ENGINE': 'djongo',
+        'NAME': 'Bullbeary',
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators

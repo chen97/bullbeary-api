@@ -28,7 +28,7 @@ from votes.views import VoteList, VoteDetail
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('stocks.urls')),
+    path('api/stocks/', include('stocks.urls')),
     path('api/', include('dj_rest_auth.urls')),
     path('api/accounts/', include('allauth.urls'), name='socialaccount_signup'),
     path('api/accounts/registration/', include('dj_rest_auth.registration.urls')),
