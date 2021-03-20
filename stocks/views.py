@@ -1,10 +1,8 @@
 from django.http.response import JsonResponse
-# from rest_framework.parsers import JSONParser
-# from rest_framework import status
 from stocks.models import Stocks
 from stocks.serializers import StockSerializer
 from rest_framework import generics
-from django.views.decorators.http import require_safe
+# from django.views.decorators.http import require_safe
 
 # Web servers should automatically strip the content of responses to HEAD requests while leaving the headers unchanged,
 # so you may handle HEAD requests exactly like GET requests in your views. Since some software,
